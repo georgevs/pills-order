@@ -32,7 +32,15 @@ git push git@github.com:spamfro/pills-order.git github/pills-order:main
 
 ### Deploy to GitHub pages
 ```
-git subtree split -P playground/pills-order/app -b gh-pages/pills-order
-git push git@github.com:spamfro/pills-order.git gh-pages/pills-order:gh-pages
+mkdir -p dist 
+rm -rf dist/* dist/.*
+tar -cC app . | tar -xvC dist
+pushd dist
+touch .nojekyll
+git init -b gh-pages
+git add --all
+git commit -m "$(date)"
+git push git@github.com:spamfro/pills-order.git --force gh-pages
+popd
 ```
 Open site at https://spamfro.site/pills-order
