@@ -17,10 +17,9 @@ docker container run --rm \
   --volume "$PWD/app:/home/node/app" \
   --volume "$PWD/certs:/home/node/certs" \
   --publish 3443:3443 \
-  -d node npx http-server ./app -c-1 --ssl -p 3443 --cert ./certs/cert.pem --key ./certs/cert-key-nopassword.pem
-
+  -d node npx http-server ./app -c-1 --ssl -a 172.20.0.100 -p 3443 --cert ./certs/cert.pem --key ./certs/cert-key-nopassword.pem
 ```
-Open site at https://xps.spamfro.site:3443 (in LAN) or https://local.spamfro.site:3443 (with forward proxy)
+Open site at https://xps.spamfro.site:3443 (in LAN) or https://local.spamfro.site:3443 (via proxy: `ssh -L 3443:172.20.0.100:3443 xps`)
 
 ## Run the app in GitHub pages
 
