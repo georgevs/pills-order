@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="urlpattern-polyfill/index.js" type="module" defer></script>
+    <script src="app.js" defer></script>
+    <script src="datasets.js" defer></script>
+    <script src="model.js" defer></script>
+    <script src="router.js" defer></script>
+    <script src="services.js" defer></script>
+    <script src="ui.components.prescription.js" defer></script>
+    <script src="ui.components.order.js" defer></script>
+    <script src="ui.js" defer></script>
+    <script src="ui.pages.js" defer></script>
+    <link href="index.css" rel="stylesheet">
+  </head>
+  
+  <body>
+    <h1 class="caption d-none"></h1>
+    <main>
+      <p class='message'>Loading...</p>
+      <section class="page"></section>
+    </main>
+
+    <template id="page-not-found">
+      <h2>Not Found!</h2>
+    </template>
+
+    <template id="page-prescription">
+      <style>
+        fieldset {
+          display: flex;
+          border: none;
+          margin-top: 1em;
+          padding: 0px;
+          gap: 10px;
+        }
+      </style>
+      <form>
+        <fieldset>
+          <x-prescription></x-prescription>
+        </fieldset>
+        <fieldset>
+          <button type="submit">Order</button>
+        </fieldset>
+      </form>
+    </template>
+
+    <template id="page-order">
+      <x-order></x-order>
+    </template>
+
+    <template id="page-inventory">
+      <style>
+        fieldset {
+          display: flex;
+          border: none;
+          margin-top: 1em;
+          padding: 0px;
+          gap: 10px;
+        }
+      </style>
+      <form>
+        <fieldset>
+          <label htmlFor='doses'>Doses:</label>
+          <input type='text' name='doses' placeholder="Available doses"/>
+        </fieldset>
+        <fieldset>
+          <button type="submit">Update</button>
+        </fieldset>
+      </form>
+    </template>
+
+  </body>
+</html>
